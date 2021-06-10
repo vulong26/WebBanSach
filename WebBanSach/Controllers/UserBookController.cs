@@ -16,6 +16,18 @@ namespace WebBanSach.Controllers
             var lstTG = db.TacGias;
             return PartialView(lstTG);
         }
+        public ActionResult CTTacGia(string Matg)
+        {
+            TacGia tacGia = db.TacGias.SingleOrDefault(n => n.MaTG == Matg);
+            if (tacGia == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+
+            }
+            return View(tacGia);
+        }
+
         public ViewResult XemChitiet(string MaSach)
         {
             Sach sach = db.Saches.SingleOrDefault(n => n.MaS == MaSach);

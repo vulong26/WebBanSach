@@ -180,18 +180,26 @@
     <Content Include="Images\1.jpg" />
     <Content Include="Images\46b6be1670dcef84b6613aa50b9552a7.jpg" />
     <Content Include="Images\51765512_1242467649234832_610362131761594368_n.jpg" />
+    <Content Include="Images\7vienngocrong.jpg" />
     <Content Include="Images\avt.jpg" />
     <Content Include="Images\banner.jpg" />
     <Content Include="Images\banner1.jpg" />
+    <Content Include="Images\camnangmuabandat.jpg" />
     <Content Include="Images\chagiauchangheo.jpg" />
+    <Content Include="Images\chetvichungkhoan.jpg" />
+    <Content Include="Images\conan.jpg" />
     <Content Include="Images\dacnhantam.jpg" />
     <Content Include="Images\dieu-y-nghia-nhat.jpg" />
     <Content Include="Images\doingandungngudai.jpg" />
     <Content Include="Images\Dungluachonannhan.jpg" />
     <Content Include="Images\Gearvn_Assassin%27s Creed_ %2840%29.jpg" />
+    <Content Include="Images\hacktoiec.jpg" />
     <Content Include="Images\i-thay-i-khi-chng-ta-thay-i-tp-3-pdf-1-638.jpg" />
+    <Content Include="Images\kiepnaocung.jpg" />
     <Content Include="Images\nhagiakim.jpg" />
+    <Content Include="Images\phantichthitruong.jpg" />
     <Content Include="Images\toiacvatrungphat.jpg" />
+    <Content Include="Images\toitaigioi.jpg" />
     <Content Include="Images\Tonybuoisang.jpg" />
     <Content Include="Images\wp7648712-xiao-genshin-impact-wallpapers.jpg" />
     <Content Include="Scripts\bootstrap.js" />
@@ -236,6 +244,7 @@
     <Content Include="Views\UserBook\TacGia.cshtml" />
     <Content Include="Views\UserBook\TheLoai.cshtml" />
     <Content Include="Views\UserBook\NhaXuatBan.cshtml" />
+    <Content Include="Views\UserBook\CTTacGia.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
