@@ -1,0 +1,130 @@
+﻿<head>
+    @using WebBanSach.Models
+    <link href="~/Content/UserCss/fonts.css" rel="stylesheet" />
+    <link href="~/Content/UserCss/screen.css" rel="stylesheet" />
+    <link href="~/Content/UserCss/user.css" rel="stylesheet" />
+    <script>
+        <script src="https://kit.fontawesome.com/yourcode.js"></script>
+    </script>
+    <style>
+        #Noidung {
+            background-color:#ffffff;
+        }
+        .DKDN a:hover {
+            text-decoration: none;
+            color: #b52525;
+        }
+        .navMenu li a:hover {
+            text-decoration: none;
+            color: #b52525;
+        }
+        .DKDN{
+            margin-top:-1.5%;
+            margin-right:22%;
+        }
+        ul.navMenu {
+            margin-right: 45%;
+        }
+        #txtTimKiem{
+            margin-top:-1.5%;
+            margin-left:40%;
+
+        }
+        button#btnTimKiem {
+            
+            margin-top: -2.8%;
+            margin-right: -30%;
+        }
+
+        .button, input[type="button"], button {
+            color: white;
+            background: #ea2858;
+            border: none;
+            padding: .7em 0;
+            outline: none;
+            width: 15%;
+            font-size: 1em;
+            cursor: pointer;
+            letter-spacing: 1px;
+            font-weight: 400;
+            font-family: 'Open Sans', sans-serif;
+            transition: 0.5s all;
+            -webkit-transition: 0.5s all;
+            -o-transition: 0.5s all;
+            -moz-transition: 0.5s all;
+            -ms-transition: 0.5s all;
+            border-radius: 30px;
+        }
+        input[type="text"], input[type="password"], textarea {
+            background: #f6f6f6;
+            border: 0;
+            font-family: "Open Sans", helvetica, arial, sans-serif;
+            padding: 1em 1.3em;
+            margin: 0;
+            margin-left: -14px;
+            font-weight: 100;
+            font-size: 1em;
+            border-radius: 30px;
+        }
+        div#banner {
+            margin-left: 15%;
+            width: 70%;
+            margin-bottom: 5%;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="ToanTrang">
+        <div class="flash success" id="divdanhmuc">
+
+            <ul class="navMenu">
+                <li><i class="fas fa-home"></i>@Html.ActionLink("Trang Chủ", "Index", "User")</li>
+
+            </ul>
+
+            <div id="txtTimKiem">
+                @using (Html.BeginForm("KetQuaTimKiem", "TimKiem", FormMethod.Post))
+                {
+                    @Html.TextBox("txtTimKiem", "", htmlAttributes: new { @class = "TextBoxTimKiem", @placeholder = "Nhập vào từ khóa" })
+                    <button style="width:50px" id="btnTimKiem"><i class="fas fa-search"></i></button>
+                }
+            </div>
+            <div class="DKDN">
+                @using (Html.BeginForm("Đăng nhập", "DangNhap", "User"))
+                {
+                    if (Session["TaiKhoan"] != null && Session["TaiKhoan"] != "")
+                    {
+                        KHACHHANG kh = (KHACHHANG)Session["TaiKhoan"];
+                        <span>@kh.HoTen</span>
+                        @Html.ActionLink("Đăng Xuất", "DangXuat", "User")
+
+                    }
+                    else
+                    {
+                        <i class="fal fa-book-user"></i>
+                        @Html.ActionLink("Đăng ký", "DangKy", "User", htmlAttributes: new { @class = "DangKy" })
+                        <i class="fas fa-sign-in-alt"></i>
+                        @Html.ActionLink("Đăng nhập", "DangNhap", "User", htmlAttributes: new { @class = "DangNhap" })
+
+                    }
+                }
+            </div>
+        </div>
+    </div>
+    <div class="flash error">
+        @Html.Action("TheLoai", "UserBook")
+        @Html.Action("TacGia", "UserBook")
+        @Html.Action("NhaXuatBan", "UserBook")
+        @Html.Action("GioHangPartial", "GioHang")
+    </div>
+
+
+    <div>
+        <div id="Noidung">
+            @RenderBody()
+        </div>
+    </div>
+    
+</body>

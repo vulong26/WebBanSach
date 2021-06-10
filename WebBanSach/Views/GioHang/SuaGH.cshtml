@@ -1,0 +1,157 @@
+﻿
+@using WebBanSach.Models
+@model List<GioHang>
+@{
+    ViewBag.Title = "GioHang";
+    Layout = "~/Views/Shared/User.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <style>
+        <style >
+        #bodydetails {
+            margin-top: 100px;
+            margin-left: 20%;
+            margin-right: 15%;
+        }
+
+        #infor {
+            margin-left: 45%;
+        }
+
+        #Avatar {
+            float: left;
+        }
+
+        .namebook {
+            font-size: 26px;
+            color: red;
+        }
+
+        .detailbook {
+            font-weight: 400;
+            color: black;
+        }
+
+
+        .DKDN {
+            margin-top: -1.5%;
+        }
+
+        .flash.success {
+            background: #3b8b98;
+        }
+
+        .flash.error {
+            background: #294c6f;
+        }
+
+        #nameBook {
+            margin-top: 10px;
+            font-size: 20;
+            font-family: Helvetica, Arial, Tahoma, sans-serif;
+            text-align: center;
+            color: black;
+        }
+
+        #Avatar {
+            border-style: dotted;
+            margin-top: 30px;
+        }
+
+        div#body {
+            margin-left: 15%;
+            margin-right: 15%;
+            margin-top: -0px;
+            background-color: #e6c4c4ad;
+        }
+
+        #price {
+            font-size: 16px;
+            font-family: Roboto, Helvetica, Arial, sans-serif;
+            color: #ff0000;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        ul li {
+            padding-left: 1px;
+            list-style: none;
+        }
+
+        .menuPage {
+            margin-left: 10%;
+        }
+
+        {
+            margin-top: 10px;
+            font-size: 20;
+            font-family: Helvetica, Arial, Tahoma, sans-serif;
+            text-align: center;
+        }
+
+        }
+
+        ul.pagination {
+            display: inline-flex;
+        }
+
+        .menuPage li {
+            margin-left: 2px;
+        }
+
+        .pagination-container {
+            margin-left: 40%;
+        }
+
+        button.btnmua {
+            width: 50%;
+            margin-left: 45px;
+            color: yellow;
+        }
+    </style>
+</head>
+
+<table>
+    <tr>
+        <td> Mã sách </td>
+
+        <td> Tên sách </td>
+
+        <td> Ảnh sách </td>
+
+        <td> Đơn giá </td>
+
+        <td> Số Lượng  </td>
+
+        <td> Thành Tiền  </td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        
+        using (Html.BeginForm("CapNhatGioHang", "GioHang", new { @iMaSp = item.iMaS }))
+        {
+            <tr>
+                <td> @item.iMaS</td>
+
+                <td> @item.sTenS</td>
+
+                <td> <img src="@Url.Content("~/Images/" + item.sTenFileAnh)" width="50" height="50" /> </td>
+
+                <td> @item.dDonGia.ToString("#,##") VNĐ </td>
+
+                <td>@Html.TextBox("txtSoLuong", item.iSoLuong)  </td>
+
+                <td>@item.ThanhTien.ToString("#,##") VNĐ </td>
+                <td>
+                    <input type="submit" value="Cập nhật"/>
+                    <br />
+                    @Html.ActionLink("Xóa","XoaGioHang",new {@iMaSp=item.iMaS})
+
+                </td>
+            </tr>
+
+         }
+
+        }
+    </table>

@@ -1,0 +1,47 @@
+﻿@using WebBanSach.Models;
+@model IEnumerable<TheLoai>
+
+<head>
+
+    <style>
+        .TLmenu {
+            margin-left: 45%;
+            cursor: pointer;
+        }
+
+        .menutl {
+            margin-left: 45%;
+            background: #ffffff;
+            font-weight: 500;
+            color: #294c6f;
+            border-radius: 30px;
+            padding-top: 20px;
+        }
+        .nametl:hover{
+            color:crimson;
+
+        }
+        li.nametl {
+            padding: 10px 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="TLmenu">
+        <ul>
+            <li>
+                <a style="padding-right:20px;">Thể loại</a>
+                <ul class="menutl">
+                    @foreach (var item in Model)
+                    {
+                        <li class="nametl"><a href="@Url.Action("CTTacGia",new { @Matg=item.TenTL})">@item.TenTL</a></li>
+                    }
+
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+</body>
+
+

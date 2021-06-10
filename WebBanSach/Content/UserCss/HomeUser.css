@@ -1,0 +1,91 @@
+﻿div#Book{
+    float:left;
+    width:200px;
+    margin-left:100px;
+    margin-bottom:50px;
+    
+}
+#Book{
+    border-style:dotted;
+   
+}
+div#body {
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top:10px;
+    background-color: #ffffff;
+}
+
+#nameBook {
+    margin-top:10px;
+    font-size:20;
+    font-family: Helvetica, Arial, Tahoma, sans-serif;
+    text-align:center;
+}
+.namebok a:hover {   
+    color:#1d61b4;
+}
+#price {
+    font-size: 16px;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    color: #ff0000;
+    font-weight:500;
+    text-align:center;
+}
+#bodydetails {
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 10px;
+}
+#Avatar{
+    border-style:dotted;
+    margin-top:30px;
+}
+#divLeft{
+    float:left;
+}
+#divRight{
+    float:right;
+}
+#bodyitems {
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 10px;
+}
+ul.pagination {
+    display: inline-flex;
+}
+.menuPage a:hover:not(.active) {
+    background-color: #1a549a;
+    /*Thiết kế hình tròn với CSS*/
+    border-radius: 50%;
+}
+#mainBanner {
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 10px;
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+
+}
+.block-slide{
+    width:70%;
+    height:600px;
+    position:relative;
+    
+}
+img{
+    width:100%;
+}
+.slide{
+    position:absolute;
+    top:0px;
+    left:0px;
+    opacity:0;
+    visibility:hidden;
+}
+.slide .active{
+    opacity:1;
+    visibility:visible;
+}

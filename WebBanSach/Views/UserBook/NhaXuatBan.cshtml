@@ -1,0 +1,51 @@
+﻿@using WebBanSach.Models;
+@model IEnumerable<NhaXuatBan>
+
+<head>
+
+    <style>
+        .NXBmenu {
+            margin-left: 0%;
+            cursor: pointer;
+        }
+
+        .menunxb {
+            cursor:pointer;
+            margin-left: 45%;
+            background: #ffffff;
+            font-weight: 500;
+            color: #294c6f;
+            border-radius: 30px;
+            padding-top: 20px;
+        }
+
+        .namenxb:hover {
+            color: crimson;
+            text-decoration:none;
+        }
+
+        li.namenxb {
+            padding: 10px 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="NXBmenu">
+        <ul>
+            <li>
+                <a style="padding-right:20px;">Nhà xuất bản</a>
+                <ul class="menutl">
+                    @foreach (var item in Model)
+                    {
+                        <li class="namenxb"><a href="@Url.Action("CTTacGia",new { @Matg=item.TenNXB})">@item.TenNXB</a></li>
+                    }
+
+                </ul>
+            </li>
+        </ul>
+
+    </div>
+</body>
+
+
+

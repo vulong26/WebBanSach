@@ -1,0 +1,45 @@
+﻿.DKDN{
+    float:right;
+    margin-right:20%;
+    margin-top:-1.5%
+}
+div#ToanTrang {
+   
+}
+#divdanhmuc {
+  font-weight:bold;
+}
+.DKDN a:hover{
+    text-decoration:none;
+    color:#b52525;
+}
+/* css cho trang chu*/
+.navMenu li {
+    display: inline;
+}
+ul.navMenu{
+    margin-right:40%;
+}
+div.danhmuc {
+    position: relative;
+    padding: 1em;
+    /*  border-radius: 4px; */
+    color: #fff;
+    background: #303030;
+    text-align: center;
+}
+.menu{
+    display:inline;
+}
+#txtTimKiem{
+    float:left;
+    margin-left: 25%;
+
+}
+#txtTimKiem input{
+    height:0;
+}
+.divmenuleft{
+    float:left;
+}
+
