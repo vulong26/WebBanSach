@@ -7,7 +7,22 @@
 <head>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <style>
+        ul li ul {
+            position: absolute; /*chọn làm thành phần con của relative trên*/
+            top: 40px; /*cho cách menu cha 40px*/
+            left: -40px; /*đưa menu con qua bên trái -40px so với menu cha */
+            display: none; /*Ban đầu sẽ không hiển thị*/
+        }
 
+        ul li:hover ul {
+            cursor: pointer;
+            display: block; /* trỏ chuột vào sẽ hiển thị menu con */
+        }
+
+        .flash.error {
+            background: #294c6f;
+            display: -webkit-box;
+        }
     .DKDN{
     margin-top:-1.5%;
 
@@ -15,9 +30,7 @@
     .flash.success {
         background: #3b8b98;
     }
-    .flash.error {
-        background: #294c6f;
-    }
+
     #nameBook {
         margin-top: 10px;
         font-size: 20;
