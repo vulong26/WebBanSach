@@ -37,7 +37,7 @@
                 <ul class="menutl">
                     @foreach (var item in Model)
                     {
-                        <li class="namenxb"><a href="@Url.Action("CTTacGia",new { @Matg=item.TenNXB})">@item.TenNXB</a></li>
+                        <li class="namenxb"><a href="@Url.Action("CTNXB",new { @MaNxb=item.MaNXB})">@item.TenNXB</a></li>
                     }
 
                 </ul>

@@ -187,6 +187,7 @@
     <Content Include="Images\camnangmuabandat.jpg" />
     <Content Include="Images\chagiauchangheo.jpg" />
     <Content Include="Images\chetvichungkhoan.jpg" />
+    <Content Include="Images\chotoixin.jpg" />
     <Content Include="Images\conan.jpg" />
     <Content Include="Images\dacnhantam.jpg" />
     <Content Include="Images\dieu-y-nghia-nhat.jpg" />
@@ -196,11 +197,21 @@
     <Content Include="Images\hacktoiec.jpg" />
     <Content Include="Images\i-thay-i-khi-chng-ta-thay-i-tp-3-pdf-1-638.jpg" />
     <Content Include="Images\kiepnaocung.jpg" />
+    <Content Include="Images\Nam-Cao-vhsg.jpg" />
     <Content Include="Images\nhagiakim.jpg" />
+    <Content Include="Images\nxbtre_thumb_30552016_085555.jpg" />
     <Content Include="Images\phantichthitruong.jpg" />
+    <Content Include="Images\romeo-va-juliet-527311.jpg" />
+    <Content Include="Images\sach-cua-stephen-king-iii.jpg" />
+    <Content Include="Images\sach-nhung-nguoi-khon-kho.jpg" />
+    <Content Include="Images\stepphenking.jpg" />
+    <Content Include="Images\tap-tho-tu-ay-558474.jpg" />
     <Content Include="Images\toiacvatrungphat.jpg" />
     <Content Include="Images\toitaigioi.jpg" />
     <Content Include="Images\Tonybuoisang.jpg" />
+    <Content Include="Images\To_Huu.jpg" />
+    <Content Include="Images\tải xuống %281%29.jpg" />
+    <Content Include="Images\tải xuống.jpg" />
     <Content Include="Images\wp7648712-xiao-genshin-impact-wallpapers.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -245,6 +256,11 @@
     <Content Include="Views\UserBook\TheLoai.cshtml" />
     <Content Include="Views\UserBook\NhaXuatBan.cshtml" />
     <Content Include="Views\UserBook\CTTacGia.cshtml" />
+    <Content Include="Views\UserBook\TGPartial.cshtml" />
+    <Content Include="Views\UserBook\CTTheLoai.cshtml" />
+    <Content Include="Views\UserBook\CTTheLoai1.cshtml" />
+    <Content Include="Views\UserBook\CTNXB.cshtml" />
+    <Content Include="Views\UserBook\NXBPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

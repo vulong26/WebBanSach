@@ -5,145 +5,145 @@
     Layout = "~/Views/Shared/User.cshtml";
 }
 <!DOCTYPE html>
+<title>Thông tin tác giả</title>
+@{ IEnumerable<Sach> lstSp = (IEnumerable<Sach>)ViewBag.Sp;
+    }
+    <html>
+    <head>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+        <style>
+            #bodydetails {
+                margin-top: 100px;
+                margin-left: 20%;
+                margin-right: 15%;
+            }
 
-<html>
-<head>
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-    <style>
-        #bodydetails {
-            margin-top: 100px;
-            margin-left: 20%;
-            margin-right: 15%;
-        }
+            #infor {
+                margin-left: 30%;
+            }
 
-        #infor {
-            margin-left: 30%;
-        }
+            #Avatar {
+                float: left;
+            }
 
-        #Avatar {
-            float: left;
-        }
+            .namebook {
+                font-size: 26px;
+                color: red;
+            }
 
-        .namebook {
-            font-size: 26px;
-            color: red;
-        }
-
-        .detailbook {
-            font-weight: 400;
-            color: black;
-        }
+            .detailbook {
+                font-weight: 400;
+                color: black;
+            }
 
 
 
-        .DKDN {
-            margin-top: -1.5%;
-        }
+            .DKDN {
+                margin-top: -1.5%;
+            }
 
-        .flash.success {
-            background: #3b8b98;
-        }
+            .flash.success {
+                background: #3b8b98;
+            }
 
-        ul li ul {
-            position: absolute; /*chọn làm thành phần con của relative trên*/
-            top: 40px; /*cho cách menu cha 40px*/
-            left: -40px; /*đưa menu con qua bên trái -40px so với menu cha */
-            display: none; /*Ban đầu sẽ không hiển thị*/
-        }
+            ul li ul {
+                position: absolute; /*chọn làm thành phần con của relative trên*/
+                top: 40px; /*cho cách menu cha 40px*/
+                left: -40px; /*đưa menu con qua bên trái -40px so với menu cha */
+                display: none; /*Ban đầu sẽ không hiển thị*/
+            }
 
-        ul li:hover ul {
-            cursor: pointer;
-            display: block; /* trỏ chuột vào sẽ hiển thị menu con */
-        }
+            ul li:hover ul {
+                cursor: pointer;
+                display: block; /* trỏ chuột vào sẽ hiển thị menu con */
+            }
 
-        .flash.error {
-            background: #294c6f;
-            display: -webkit-box;
-        }
+            .flash.error {
+                background: #294c6f;
+                display: -webkit-box;
+            }
 
-        #nameBook {
-            margin-top: 10px;
-            font-size: 20;
-            font-family: Helvetica, Arial, Tahoma, sans-serif;
-            text-align: center;
-            color: black;
-        }
+            #nameBook {
+                margin-top: 10px;
+                font-size: 20;
+                font-family: Helvetica, Arial, Tahoma, sans-serif;
+                text-align: center;
+                color: black;
+            }
 
-        #Avatar {
-            border-style: dotted;
-            margin-top: 30px;
-        }
+            #Avatar {
+                border-style: dotted;
+                margin-top: 30px;
+            }
 
-        div#body {
-            margin-left: 15%;
-            margin-right: 15%;
-            margin-top: -0px;
-            background-color: #e6c4c4ad;
-        }
+            div#body {
+                margin-left: 15%;
+                margin-right: 15%;
+                margin-top: -0px;
+                background-color: #e6c4c4ad;
+            }
 
-        #price {
-            font-size: 16px;
-            font-family: Roboto, Helvetica, Arial, sans-serif;
-            color: #ff0000;
-            font-weight: 500;
-            text-align: center;
-        }
+            #price {
+                font-size: 16px;
+                font-family: Roboto, Helvetica, Arial, sans-serif;
+                color: #ff0000;
+                font-weight: 500;
+                text-align: center;
+            }
+            .navbar.navbar-inverse.navbar-fixed-top {
+                display: none;
+            }
+            ul li {
+                padding-left: 1px;
+                list-style: none;
+            }
 
-        ul li {
-            padding-left: 1px;
-            list-style: none;
-        }
+            .menuPage {
+                margin-left: 10%;
+            }
 
-        .menuPage {
-            margin-left: 10%;
-        }
+            {
+                margin-top: 10px;
+                font-size: 20;
+                font-family: Helvetica, Arial, Tahoma, sans-serif;
+                text-align: center;
+            }
 
-        {
-            margin-top: 10px;
-            font-size: 20;
-            font-family: Helvetica, Arial, Tahoma, sans-serif;
-            text-align: center;
-        }
 
-        }
 
-        ul.pagination {
-            display: inline-flex;
-        }
+            .menuPage li {
+                margin-left: 2px;
+            }
 
-        .menuPage li {
-            margin-left: 2px;
-        }
+            .pagination-container {
+                margin-left: 40%;
+            }
 
-        .pagination-container {
-            margin-left: 40%;
-        }
 
-        button.btnmua {
-            width: 50%;
-            margin-left: 45px;
-            color: yellow;
-        }
-    </style>
-</head>
-<body>
-    <div id="bodydetails">
-        <div id="Avatar">
-            <img src="@Url.Content("~/Images/" +Model.Image)" width="200" height="350" />
+        </style>
+    </head>
+    <body>
+        <div id="bodydetails">
+            <div id="Avatar">
+                <img src="@Url.Content("~/Images/" +Model.Image)" width="200" height="350" />
+            </div>
+            <div id="infor">
+                <div class="namebook">@Model.TenTG</div>
+                <br />
+                <div class="detailbook">Giới thiệu tác giả:<br />@Model.MoTa</div>
+                <br />
+                <div><b style="color:black">Giới tính:  </b><a style="color:#cc1515"> @Model.GioiTinh </a> </div>
+                <br />
+
+
+
+            </div>
+            
         </div>
-        <div id="infor">
-            <div class="namebook">@Model.TenTG</div>
-            <br />
-            <div class="detailbook">Giới thiệu tác giả:<br />@Model.MoTa</div>
-            <br />
-            <div><b style="color:black">Giới tính:  </b><a style="color:#cc1515"> @Model.GioiTinh </a> </div>
-            <br />
-
-        </div>
-        <div>
-
-        </div>
-    </div>
-
-</body>
+        <br/>
+        <p style="margin:20px 0px 100px 0px">
+        
+            @Html.Action("TGPartial", lstSp)
+        </p>
+    </body>
 </html>
