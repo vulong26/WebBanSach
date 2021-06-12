@@ -101,9 +101,9 @@
                 <a href="@Url.Action("DetailsBook",new { @masach=item.MaS   })">
                     <img src="@Url.Content("~/Images/" +item.TenFileAnh)" width="220" height="250" />
                 </a>
-
+                <a href="@Url.Action("DetailsBook",new { @masach=item.MaS})">@item.TenS</a>
             </div>
-            <div id="nameBook" class="namebok"><a href="@Url.Action("DetailsBook",new { @masach=item.MaS})">@item.TenS</a> </div>
+            <div id="nameBook" class="namebok"> </div>
             <div id="price"><font color="green">Giá:</font>  @item.GiaBan đ</div>
             <button class="btnmua"><a href="@Url.Action("ThemGioHang","GioHang",new { @iMaS=item.MaS,@sUrl=Request.Url.ToString() })">Mua</a></button>
 
