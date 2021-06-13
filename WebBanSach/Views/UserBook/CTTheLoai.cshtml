@@ -11,15 +11,24 @@
             font-weight: 600;
             margin-right: 50px;
             text-align: center;
-            max-width: 300px;
+            max-width: 225px;
         }
 
         button.btnmua {
             width: 140px;
         }
+        span.title {
+            color: white;
+            background: #56b1d4;
+            font-size: x-large;
+            margin-left: 45%;
+            font-weight: 600;
+            padding: 10 60;
+            border-radius: 16px;
+        }
     </style>
 </head>
-<h4 style="margin-left:25%; color:red; margin-top:20px;">Tác phẩm: </h4>
+<span class="title">ẤN PHẨM</span>
 @foreach (var item in Model)
 {
     <div id="Book">

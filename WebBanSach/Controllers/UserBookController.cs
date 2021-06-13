@@ -113,7 +113,7 @@ namespace WebBanSach.Controllers
             {
                 return RedirectToAction("Index", "User");
             }
-            List<Sach> lstSach = db.Saches.Where(n => n.MaNXB == MaNxb).ToList();
+            List<Sach> lstSach = db.Saches.Where(n => n.MaNXB == MaNxb).Take(4).ToList();
             if (lstSach.Count == 0)
             {
                 ViewBag.TB = "Không có quyển sách nào";

@@ -84,11 +84,33 @@
         margin-left: 45px;
         color: yellow;
     }
+        td {
+            padding: 20px;
+            text-align: center;
+        }
+        table.giohang {
+            border-radius: 30px;
+            /* border-collapse: collapse; */
+            margin-left: 32%;
+            background: bisque;
+            color: black;
+            margin-top: 30px;
+        
+        }
+        span.title {
+            color: white;
+            background: #56b1d4;
+            font-size: x-large;
+            margin-left: 45%;
+            font-weight: 600;
+            padding: 10 60;
+            border-radius: 16px;
+        }
  </style>
 </head>
 
-<h2>GioHang</h2>
-<table>
+<span class="title">GIỎ HÀNG CỦA BẠN</span>
+<table class="giohang">
     <tr>
         <td> Mã sách </td>
 
@@ -104,37 +126,40 @@
     </tr>
     @foreach (var item in Model)
     {
-        <tr>
-            <td> @item.iMaS</td>
+<tr>
+    <td> @item.iMaS</td>
 
-            <td> @item.sTenS</td>
+    <td> @item.sTenS</td>
 
-            <td> <img src="@Url.Content("~/Images/" +item.sTenFileAnh)" width="50" height="50" /> </td>
+    <td> <img src="@Url.Content("~/Images/" +item.sTenFileAnh)" width="50" height="50" /> </td>
 
-            <td> @item.dDonGia.ToString("#,##") VNĐ </td>
+    <td> @item.dDonGia.ToString("#,##") VNĐ </td>
 
-            <td> @item.iSoLuong  </td>
+    <td> @item.iSoLuong  </td>
 
-            <td>@item.ThanhTien.ToString("#,##") VNĐ </td>
+    <td>@item.ThanhTien.ToString("#,##") VNĐ </td>
+    <td colspan="6" style="text-align:right;color:blue">
+        @using (Html.BeginForm("DatHang", "GioHang"))
+        {
+            <input type="submit" value="Đặt hàng" />
+        }
+        <p class="capnhat">@Html.ActionLink("Cập nhật", "SuaGH")</p>
+    </td>
 
-        </tr>
+
+</tr>
 
 
 
     }
     <tr>
-        <td colspan="6" style="text-align:right;color:blue">
-            @Html.ActionLink("Sửa", "SuaGH")
-        </td>
+        @*<td  colspan="6" style="text-align:right;color:black;background:white;">
+            
+        </td>*@
 
     </tr>
     <tr>
-        <td colspan="6" style="text-align:right;color:blue">
-          @using (Html.BeginForm("DatHang", "GioHang"))
-            {
-              <input type="submit" value="Đặt hàng"/>
-            }
-        </td>
+
 
     </tr>
 </table>
