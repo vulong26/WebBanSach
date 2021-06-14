@@ -9,36 +9,42 @@
 @model PagedList.IPagedList<Sach>
 <link href="~/Content/UserCss/HomeUser.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
-<style> 
 
-    .DKDN{
-    margin-top:-1.5%;
+<style>
 
+    .DKDN {
+        margin-top: -1.5%;
     }
+
     .flash.success {
         background: #3b8b98;
     }
+
     .flash.error {
         background: #294c6f;
         display: -webkit-box;
     }
+
     #nameBook {
         margin-top: 10px;
         font-size: 20;
         font-family: Helvetica, Arial, Tahoma, sans-serif;
         text-align: center;
-        color:black;
+        color: black;
     }
+
     #Avatar {
         border-style: dotted;
         margin-top: 30px;
     }
+
     div#body {
         margin-left: 15%;
         margin-right: 15%;
         margin-top: -0px;
         background-color: #e6c4c4ad;
     }
+
     #price {
         font-size: 16px;
         font-family: Roboto, Helvetica, Arial, sans-serif;
@@ -46,13 +52,16 @@
         font-weight: 500;
         text-align: center;
     }
+
     ul li {
-        padding-left:1px;
-        list-style:none;
+        padding-left: 1px;
+        list-style: none;
     }
+
     .menuPage {
         margin-left: 10%;
     }
+
     div#Book {
         float: left;
         width: 200px;
@@ -62,35 +71,40 @@
         text-align: center;
         font-weight: 600;
     }
-    
+
 
     button.btnmua {
         width: 50%;
-       margin-left:1px;
+        margin-left: 1px;
         color: yellow;
     }
+
     {
         margin-top: 10px;
         font-size: 20;
         font-family: Helvetica, Arial, Tahoma, sans-serif;
         text-align: center;
     }
-    
+
 
     ul.pagination {
         display: inline-flex;
     }
-    .menuPage li{
-        margin-left:2px;
+
+    .menuPage li {
+        margin-left: 2px;
     }
+
     .pagination-container {
         margin-left: 40%;
     }
+
     button.btnmua {
         width: 50%;
         margin-left: 2px;
         color: yellow;
     }
+
     ul li ul {
         position: absolute; /*chọn làm thành phần con của relative trên*/
         top: 40px; /*cho cách menu cha 40px*/
@@ -103,9 +117,67 @@
         display: block; /* trỏ chuột vào sẽ hiển thị menu con */
     }
 
-</style>
-<title>LDBook</title>
+    .banner {
+        width: 1280px;
+        height: 600px;
+        margin-left: 17%;
+        margin-bottom: 5%;
+        margin-top: 15%;
+        border-radius: 20px;
+        position: relative;
+        overflow: hidden;
+    }
 
+    .chuyen-slide {
+        float: left;
+        overflow: hidden;
+        display: flex;
+        transition: all 0.5s;
+    }
+
+    .dieuhuong {
+        color: aquamarine;
+        position: absolute;
+        top: 53%;
+        font-size: 50px;
+        padding-left: 5px;
+    }
+
+        .dieuhuong i:last-child {
+            position: relative;
+            left: 1200px;
+        }
+    .nameweb {
+        color: white;
+        background: #56b1d4;
+        font-size: x-large;
+        margin-left: 36%;
+        font-weight: 600;
+        padding: 10 60;
+        border-radius: 16px;
+        width: 25%;
+        text-align: center;
+        margin-top: 10px;
+    }
+</style>
+
+<title>LDBook</title>
+<div class="nameweb">
+    <span>Hệ thống sách<br />LDBooK </span>
+</div>
+<div class="banner">
+    <div class="dieuhuong">
+        <i class="far fa-chevron-left" onclick="Back();"></i>
+        <i class="far fa-chevron-right" onclick="Next();"></i>
+    </div>
+
+    <div class="chuyen-slide">
+        <img src="~/Images/1.jpg" />
+        <img src="~/Images/banner1.jpg" />
+    </div>
+
+</div>
+<script src="~/Content/UserCss/slide.js"></script>
 <div id="body">
     @{ int i = 0;}
 
