@@ -25,6 +25,9 @@ namespace WebBanSach
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+            var pagedListFile = new StyleBundle("~/Content/PagedListCSS");
+            pagedListFile.Include("~/Content/PagedList.css");
+            bundles.Add(pagedListFile);
         }
     }
 }

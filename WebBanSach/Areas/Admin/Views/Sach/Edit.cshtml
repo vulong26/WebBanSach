@@ -1,0 +1,193 @@
+﻿@using WebBanSach.Areas.Admin.Models.Entities;
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    var sach = (Sach)ViewBag.sa;
+    var tk = Session["username"];
+    if (tk == null)
+    {
+        Response.Redirect("~/Admin/Login/Login");
+    }
+}
+@section ProfileSetting
+{
+    @tk
+}
+
+@section Profile
+    {
+    <div class="profile clearfix">
+        <div class="profile_pic">
+            <img src="~/Areas/Admin/Content/Photo/Anh3x4.jpg" alt="..." class="img-circle profile_img">
+        </div>
+        <div class="profile_info">
+            <span>Xin chào,</span>
+            <h2>@tk</h2>
+        </div>
+    </div>
+}
+<div class="">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 ">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Sửa</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <br />
+                    <form action="Edit" method="post" role="form" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data">
+                        <input type="hidden" id="MaS" name="MaS" value="@sach.MaS" />
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="TenS">
+                                Tên sách <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input type="text" name="TenS" id="TenS" required="required" class="form-control " value="@sach.TenS">
+                            </div>
+                        </div>
+
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="MoTa">
+                                Mô tả <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <textarea rows="3" name="MoTa" id="MoTa" required="required" class="form-control">@sach.MoTa</textarea>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="GiaBan">
+                                Giá bán(đồng)  <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input required="required" value="@sach.GiaBan" type="number" id="GiaBan" class="form-control " name="GiaBan" min="0" step="1000">
+                            </div>
+                        </div>
+
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="NgayTaiLen">
+                                Ngày tải lên <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input value="@sach.NgayTaiLen.ToString("dd/MM/yyyy")" required="required" id="NgayTaiLen" name="NgayTaiLen" class="date-picker form-control"
+                                       placeholder="dd/MM/yyyy" type="text" onclick=" this.type='date'">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="TrangThai">
+                                Trạng thái
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input type="text" name="TrangThai" id="TrangThai" class="form-control " value="@sach.TrangThai">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="SoLuong">
+                                Số lượng(quyển)
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input value="@sach.SoLuong" type="number" id="SoLuong" class="form-control " name="SoLuong" min="0" step="1">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="MaTL">
+                                Thể loại <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <select required="required" class="form-control" name="MaTL">
+                                    @foreach (var item in ViewBag.tl)
+                                    {
+
+                                        var select = "";
+                                        if (item.MaTL == sach.MaTL)
+                                        {
+                                            select = "selected";
+                                        }
+                                        <option @select value="@item.MaTL">@item.TenTL</option>
+
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="MaTG">
+                                Tác giả <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <select required="required" class="form-control" name="MaTG">
+                                    @foreach (var item in ViewBag.tg)
+                                    {
+
+                                        var select = "";
+                                        if (item.MaTG == sach.MaTG)
+                                        {
+                                            select = "selected";
+                                        }
+                                        <option @select value="@item.MaTG">@item.TenTG</option>
+
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="MaNXB">
+                                Nhà xuất bản <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <select required="required" class="form-control" name="MaNXB">
+                                    @foreach (var item in ViewBag.nxb)
+                                    {
+
+                                        var select = "";
+                                        if (item.MaNXB == sach.MaNXB)
+                                        {
+                                            select = "selected";
+                                        }
+                                        <option @select value="@item.MaNXB">@item.TenNXB</option>
+
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="Anh">
+                                Chọn ảnh
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input class="form-control " onchange="readURL(this);" type="file" id="TenFileAnh" name="TenFileAnh">
+
+                                <img id="blah" height="200px" width="250px" src="~/Areas/Admin/Content/Photo/@sach.TenFileAnh" alt="your image" />
+                                <script>
+                                    function readURL(input) {
+                                        if (input.files && input.files[0]) {
+                                            var reader = new FileReader();
+
+                                            reader.onload = function (e) {
+                                                $('#blah')
+                                                    .attr('src', e.target.result)
+                                                    .width(250)
+                                                    .height(200);
+                                            };
+
+                                            reader.readAsDataURL(input.files[0]);
+                                        }
+                                    }
+                                </script>
+                            </div>
+                        </div>
+                        <div class="ln_solid"></div>
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-6 offset-md-3">
+                                <button class="btn btn-primary" type="button" onclick="location.href='@Url.Action("Sach","Sach")';">Đóng</button>
+                                <button class="btn btn-primary" type="reset">Reset</button>
+                                <button type="submit" class="btn btn-success">Lưu</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

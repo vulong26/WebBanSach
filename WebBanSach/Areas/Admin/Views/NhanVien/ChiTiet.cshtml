@@ -1,0 +1,168 @@
+﻿@using WebBanSach.Areas.Admin.Models.Entities;
+@{
+    ViewBag.Title = "ChiTiet";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    var nhanvien = (NhanVien)ViewBag.nv;
+    var tk = Session["username"];
+    if (tk == null)
+    {
+        Response.Redirect("~/Admin/Login/Login");
+    }
+}
+@section ProfileSetting
+{
+    @tk
+}
+
+@section Profile
+    {
+    <div class="profile clearfix">
+        <div class="profile_pic">
+            <img src="~/Areas/Admin/Content/Photo/Anh3x4.jpg" alt="..." class="img-circle profile_img">
+        </div>
+        <div class="profile_info">
+            <span>Xin chào,</span>
+            <h2>@tk</h2>
+        </div>
+    </div>
+}
+<div class="">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 ">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Chi tiết</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <br />
+                    <form action="Edit" method="post" role="form" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data">
+                        <input type="hidden" id="MaNV" name="MaNV" value="@nhanvien.MaNV" />
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="TenNV">
+                                Tên nhân viên
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input type="text" name="TenNV" id="TenNV" required="required" class="form-control " value="@nhanvien.TenNV" readonly>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="SDT">
+                                Số điện thoại
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input type="text" name="SDT" id="SDT" required="required" class="form-control " value="@nhanvien.SDT" readonly>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="DiaChi">
+                                Địa chỉ
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <textarea rows="3" name="DiaChi" id="DiaChi" required="required" class="form-control" readonly>@nhanvien.DiaChi</textarea>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="GioiTinh">
+                                Giới tính
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input type="text" class="form-control " required="required" name="GioiTinh" id="GioiTinh" value="@nhanvien.GioiTinh" readonly />
+                                @*<select class="select2_single form-control" required="required" name="GioiTinh" id="GioiTinh" value="@nhanvien.GioiTinh">
+                                        @{
+                                            if (nhanvien.GioiTinh == "Nam")
+                                            {
+                                                <option selected>Nam</option>
+                                            }
+                                            else
+                                            {
+                                                <option selected>Nữ</option>
+                                            }
+                                        }
+                                    </select>*@
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="NgaySinh">
+                                Ngày sinh
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input value="@nhanvien.NgaySinh.ToString("dd/MM/yyyy")" required="required" id="NgaySinh" name="NgaySinh" class="date-picker form-control"
+                                       type="text" readonly>
+                                @*<script>
+                                        function timeFunctionLong(input) {
+                                            setTimeout(function () {
+                                                input.type = 'date';
+                                            }, 60000);
+                                        }
+                                    </script>*@
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="Luong">
+                                Lương(đồng)
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input value="@nhanvien.Luong" required="required" type="number" id="Luong" class="form-control " name="Luong" min="0" step="1000000" readonly>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="MaBP">
+                                Bộ phận
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                @foreach (var item in ViewBag.bp)
+                                {
+
+                                    if (item.MaBP == nhanvien.MaBP)
+                                    {
+                                        <input type="text" required="required" class="form-control" name="MaBP" readonly value="@item.TenBP" />
+                                        break;
+                                    }
+                                }
+                                @*<select required="required" class="form-control" name="MaBP">
+                                        @foreach (var item in ViewBag.bp)
+                                        {
+
+                                            if (item.MaBP == nhanvien.MaBP)
+                                            {
+                                                <option selected value="@item.MaBP">@item.TenBP</option>
+                                                break;
+                                            }
+                                        }
+                                    </select>*@
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="Anh">
+                                Ảnh
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <img id="blah" height="200px" width="250px" src="~/Areas/Admin/Content/Photo/@nhanvien.Anh" alt="your image" />
+                            </div>
+                        </div>
+                        @*<div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="img">
+                                    Chọn ảnh <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <input type="file" name="uploadfile" id="img" style="display:none;" />
+                                    <div>
+                                        <label display:block for="img">Click me to upload image</label>
+                                    </div>
+                                </div>
+                            </div>*@
+                        <div class="ln_solid"></div>
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-6 offset-md-3">
+                                <button class="btn btn-primary" type="button" onclick="location.href='@Url.Action("NhanVien","NhanVien")';">Đóng</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

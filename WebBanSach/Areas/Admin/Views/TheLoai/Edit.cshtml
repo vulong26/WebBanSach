@@ -1,0 +1,71 @@
+﻿@using WebBanSach.Areas.Admin.Models.Entities;
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    var tl = (TheLoai)ViewBag.tl;
+    var tk = Session["username"];
+    if (tk == null)
+    {
+        Response.Redirect("~/Admin/Login/Login");
+    }
+}
+@section ProfileSetting
+{
+    @tk
+}
+
+@section Profile
+    {
+    <div class="profile clearfix">
+        <div class="profile_pic">
+            <img src="~/Areas/Admin/Content/Photo/Anh3x4.jpg" alt="..." class="img-circle profile_img">
+        </div>
+        <div class="profile_info">
+            <span>Xin chào,</span>
+            <h2>@tk</h2>
+        </div>
+    </div>
+}
+<div class="">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 ">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Sửa</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <br />
+                    <form action="Edit" method="post" role="form" enctype="multipart/form-data" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                        <input type="hidden" id="MaTL" name="MaTL" value="@tl.MaTL">
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="TenTL">
+                                Tên thể loại <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input type="text" name="TenTL" id="TenTL" required="required" class="form-control " value="@tl.TenTL">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="MoTa">
+                                Mô tả <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <textarea rows="3" name="MoTa" id="MoTa" required="required" class="form-control">@tl.MoTa</textarea>
+                            </div>
+                        </div>
+                        <div class="ln_solid"></div>
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-6 offset-md-3">
+                                <button class="btn btn-primary" type="button" onclick="location.href='@Url.Action("TheLoai","TheLoai")';">Đóng</button>
+                                <button class="btn btn-primary" type="reset">Reset</button>
+                                <button type="submit" class="btn btn-success">Lưu</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

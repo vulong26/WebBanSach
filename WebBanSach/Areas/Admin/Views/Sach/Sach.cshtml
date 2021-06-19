@@ -1,0 +1,268 @@
+﻿@model PagedList.IPagedList<WebBanSach.Areas.Admin.Models.Entities.Sach>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Sach";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    var tk = Session["username"];
+    if (tk == null)
+    {
+        Response.Redirect("~/Admin/Login/Login");
+    }
+}
+
+@Styles.Render("~/Content/PagedListCSS")
+
+@section ProfileSetting
+{
+    @tk
+}
+
+@section Profile
+    {
+    <div class="profile clearfix">
+        <div class="profile_pic">
+            <img src="~/Areas/Admin/Content/Photo/Anh3x4.jpg" alt="..." class="img-circle profile_img">
+        </div>
+        <div class="profile_info">
+            <span>Xin chào,</span>
+            <h2>@tk</h2>
+        </div>
+    </div>
+}
+
+@section Contents{
+    <ol class="breadcrumb float-sm-left">
+        <li class="breadcrumb-item"><a href="/User/Index"><i class="fa fa-home"></i>Trang chủ</a></li>
+        <li class="breadcrumb-item active">Quản lý sách</li>
+        <li class="breadcrumb-item active">Sách</li>
+    </ol>
+}
+
+<style>
+    .dataTables_filter {
+        display: none;
+    }
+</style>
+
+<div class="">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 ">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Tìm kiếm</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                        <li>
+                            <a class="close-link"><i class="fa fa-close"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <br />
+                    <form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="searchString">
+                                Từ khóa (tên, mô tả)
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input type="text" id="searchString" class="form-control " value="@ViewBag.SearchString" name="searchString">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="searchTuNgay">
+                                Ngày tải lên: Từ
+                            </label>
+                            <div class="col-md-2 col-sm-2 ">
+                                <input id="searchTuNgay" value="@ViewBag.SearchTuNgay" name="searchTuNgay" class="date-picker form-control" type="date" @*onclick="this.type='date'" onmouseout="this.type='date'"*@>
+                                <script type="text/javascript">
+                                    $('#button').click({
+                                        format: 'DD/MM/YYYY'
+                                    });
+                                </script>
+                            </div>
+                            <label class="col-form-label col-md-2 col-sm-2 label-align" for="searchDenNgay">
+                                Đến
+                            </label>
+                            <div class="col-md-2 col-sm-2 ">
+                                <input id="searchDenNgay" value="@ViewBag.SearchDenNgay" name="searchDenNgay" class="date-picker form-control" type="date" @*onclick="this.type='date'" onmouseout="this.type='date'"*@>
+
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="searchTuGia">
+                                Giá(đồng): Từ
+                            </label>
+                            <div class="col-md-2 col-sm-2 ">
+                                <input type="number" id="searchTuGia" class="form-control " value="@ViewBag.SearchTuGia" name="searchTuGia" min="0" step="1000">
+                            </div>
+                            <label class="col-form-label col-md-2 col-sm-2 label-align" for="searchDenGia">
+                                Đến
+                            </label>
+                            <div class="col-md-2 col-sm-2 ">
+                                <input type="number" id="searchDenGia" class="form-control " value="@ViewBag.SearchDenGia" name="searchDenGia" min="0" step="1000">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="searchTuSL">
+                                Số lượng(quyển): Từ
+                            </label>
+                            <div class="col-md-2 col-sm-2 ">
+                                <input type="number" id="searchTuSL" class="form-control " value="@ViewBag.SearchTuSL" name="searchTuSL" min="0" step="1">
+                            </div>
+                            <label class="col-form-label col-md-2 col-sm-2 label-align" for="searchDenSL">
+                                Đến
+                            </label>
+                            <div class="col-md-2 col-sm-2 ">
+                                <input type="number" id="searchDenSL" class="form-control " value="@ViewBag.SearchDenSL" name="searchDenSL" min="0" step="1">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="searchTheLoai">
+                                Thể loại
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <select class=" select2_single form-control" tabindex="-1" value="@ViewBag.SearchTheLoai" name="searchTheLoai" id="searchTheLoai">
+                                    <option></option>
+                                    @foreach (var item in ViewBag.TheLoai)
+                                    {
+                                        <option value="@item.MaTL">@item.TenTL</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="searchTacGia">
+                                Tác giả
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <select class=" select2_single form-control" tabindex="-1" value="@ViewBag.SearchTacGia" name="searchTacGia" id="searchTacGia">
+                                    <option></option>
+                                    @foreach (var item in ViewBag.TacGia)
+                                    {
+                                        <option value="@item.MaTG">@item.TenTG</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="searchNhaXuatBan">
+                                Nhà xuất bản
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <select class=" select2_single form-control" tabindex="-1" value="@ViewBag.SearchNhaXuatBan" name="searchNhaXuatBan" id="searchNhaXuatBan">
+                                    <option></option>
+                                    @foreach (var item in ViewBag.NhaXuatBan)
+                                    {
+                                        <option value="@item.MaNXB">@item.TenNXB</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="ln_solid"></div>
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-6 offset-md-3">
+                                <button type="submit" class="btn btn-success" id="button" @*onclick="change()"*@>Tìm kiếm</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 ">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Quản lý sách</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card-box table-responsive">
+                                <div class="col-md-" style="float:right; ">
+                                    <a href="Add" class="btn btn-primary" style="background-color:forestgreen;">Thêm mới</a>
+                                </div>
+                                <table id="datatable" class="table table-striped table-bordered" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align:center;">STT</th>
+                                            <th style="text-align:center;">Tên sách</th>
+                                            <th style="text-align:center;">Mô tả</th>
+                                            <th style="text-align:center;">Giá bán</th>
+                                            <th style="text-align:center;">Ngày tải lên</th>
+                                            <th style="text-align:center;">Trạng thái</th>
+                                            <th style="text-align:center;">Số lượng</th>
+                                            <th style="text-align:center;">Ảnh</th>
+                                            <th style="text-align:center;">Chức năng</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @for (var i = 0; i < Model.Count; i++)
+                                        {
+                                            var item = Model.ElementAt(i);
+                                            <tr>
+                                                <td style="text-align:center;">@(i + 1)</td>
+                                                <td style="text-align:left;">@item.TenS</td>
+                                                <td style="text-align:left;">@item.MoTa</td>
+                                                <td style="text-align:right;">@item.GiaBan</td>
+                                                <td style="text-align:center;">@item.NgayTaiLen.ToString("dd/MM/yyyy")</td>
+                                                <td style="text-align:left;">@item.TrangThai</td>
+                                                <td style="text-align:right;">@item.SoLuong</td>
+                                                <td style="text-align:center;"><img height="50px" src="~/Areas/Admin/Content/Photo/@item.TenFileAnh" /></td>
+                                                <td style="text-align:center;">
+                                                    <a href="~/Admin/Sach/Edit?MaS=@item.MaS">
+                                                        <span class="glyphicon glyphicon-edit">
+                                                        </span>
+                                                    </a>
+                                                    <a href="~/Admin/Sach/ChiTiet?MaS=@item.MaS">
+                                                        <span class="glyphicon glyphicon-eye-open">
+                                                        </span>
+                                                    </a>
+                                                    <a href="~/Admin/Sach/Delete?MaS=@item.MaS" onclick="return confirm('Bạn chắc chắn muốn xóa?')">
+                                                        <span class="glyphicon glyphicon-trash"></span>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        }
+
+                                    </tbody>
+
+                                </table>
+
+                                <div class="col-sm-7" style="display:none">
+                                    <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+                                        @Html.PagedListPager(Model, PageNum => Url.Action("Sach", new { PageNum }))
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <!-- /.box-body -->
+
+                        </div>
+                        <!-- /.box -->
+                        <!-- /.box -->
+                    </div>
+                    <!-- /.col -->
+
+                </div>
+                <!-- /.row -->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#datatable').DataTable();
+    });
+</script>
+

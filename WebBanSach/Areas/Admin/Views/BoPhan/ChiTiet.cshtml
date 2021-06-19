@@ -1,0 +1,77 @@
+﻿@using WebBanSach.Areas.Admin.Models.Entities;
+@{
+    ViewBag.Title = "ChiTiet";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    var bp = (BoPhan)ViewBag.bp;
+    var tk = Session["username"];
+    if (tk == null)
+    {
+        Response.Redirect("~/Admin/Login/Login");
+    }
+}
+@section ProfileSetting
+{
+    @tk
+}
+
+@section Profile
+    {
+    <div class="profile clearfix">
+        <div class="profile_pic">
+            <img src="~/Areas/Admin/Content/Photo/Anh3x4.jpg" alt="..." class="img-circle profile_img">
+        </div>
+        <div class="profile_info">
+            <span>Xin chào,</span>
+            <h2>@tk</h2>
+        </div>
+    </div>
+}
+<div class="">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 ">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Chi tiết</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <br />
+                    <form action="Edit" method="post" role="form" enctype="multipart/form-data" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+                        <input type="hidden" id="MaBP" name="MaBP" value="@bp.MaBP">
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="TenBP">
+                                Tên bộ phận
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input type="text" name="TenBP" id="TenBP" required="required" class="form-control " value="@bp.TenBP" readonly>
+                            </div>
+                        </div>
+                        @*<div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="SDT">
+                                    Số điện thoại
+                                </label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <input type="text" name="SDT" id="SDT" required="required" class="form-control " value="@nxb.SDT" readonly>
+                                </div>
+                            </div>
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="DiaChi">
+                                    Địa chỉ
+                                </label>
+                                <div class="col-md-6 col-sm-6 ">
+                                    <textarea rows="3" name="DiaChi" id="DiaChi" required="required" class="form-control" readonly>@nxb.DiaChi</textarea>
+                                </div>
+                            </div>*@
+                        <div class="ln_solid"></div>
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-6 offset-md-3">
+                                <button class="btn btn-primary" type="button" onclick="location.href='@Url.Action("BoPhan","BoPhan")';">Đóng</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

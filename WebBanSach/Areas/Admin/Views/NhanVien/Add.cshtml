@@ -1,0 +1,147 @@
+﻿@model List<WebBanSach.Areas.Admin.Models.Entities.NhanVien>
+@*@model List<WebBanSach.Areas.Admin.Models.Entities.BoPhan>*@
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    var tk = Session["username"];
+    if (tk == null)
+    {
+        Response.Redirect("~/Admin/Login/Login");
+    }
+}
+@section ProfileSetting
+{
+    @tk
+}
+
+@section Profile
+    {
+    <div class="profile clearfix">
+        <div class="profile_pic">
+            <img src="~/Areas/Admin/Content/Photo/Anh3x4.jpg" alt="..." class="img-circle profile_img">
+        </div>
+        <div class="profile_info">
+            <span>Xin chào,</span>
+            <h2>@tk</h2>
+        </div>
+    </div>
+}
+<div class="">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 ">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Thêm mới</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <br />
+                    <form action="Add" method="post" role="form" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" enctype="multipart/form-data">
+
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="TenNV">
+                                Tên nhân viên <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input type="text" name="TenNV" id="TenNV" required="required" class="form-control " placeholder="Nhập tên nhân viên">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="SDT">
+                                Số điện thoại <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input type="text" name="SDT" id="SDT" required="required" class="form-control " placeholder="Nhập số điện thoại">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="DiaChi">
+                                Địa chỉ <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <textarea rows="3" name="DiaChi" id="DiaChi" required="required" class="form-control" placeholder="Nhập địa chỉ..."></textarea>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="GioiTinh">
+                                Giới tính <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <select class="select2_single form-control" required="required" tabindex="-1" name="GioiTinh" id="GioiTinh">
+                                    <option></option>
+                                    <option value="Nam">Nam</option>
+                                    <option value="Nữ">Nữ</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="NgaySinh">
+                                Ngày sinh <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input required="required" id="NgaySinh" name="NgaySinh" class="date-picker form-control" placeholder="dd/MM/yyyy" type="text" onclick="this.type='date'">
+
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="Luong">
+                                Lương(đồng)
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input type="number" id="Luong" class="form-control " name="Luong" min="0" step="1000000">
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="MaBP">
+                                Bộ phận <span class="required">*</span>
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <select required="required" class="form-control" name="MaBP">
+                                    @foreach (var item in ViewBag.BoPhan)
+                                    {
+                                        <option value="@item.MaBP">@item.TenBP</option>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="item form-group">
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="Anh">
+                                Chọn ảnh
+                            </label>
+                            <div class="col-md-6 col-sm-6 ">
+                                <input class="form-control " onchange="readURL(this);" type="file" id="Anh" name="Anh">
+                                <img id="blah" src="#" alt="your image" />
+                                <script>
+                                    function readURL(input) {
+                                        if (input.files && input.files[0]) {
+                                            var reader = new FileReader();
+
+                                            reader.onload = function (e) {
+                                                $('#blah')
+                                                    .attr('src', e.target.result)
+                                                    .width(250)
+                                                    .height(200);
+                                            };
+
+                                            reader.readAsDataURL(input.files[0]);
+                                        }
+                                    }
+                                </script>
+                            </div>
+                        </div>
+                        <div class="ln_solid"></div>
+                        <div class="item form-group">
+                            <div class="col-md-6 col-sm-6 offset-md-3">
+                                <button class="btn btn-primary" type="button" onclick="location.href='@Url.Action("NhanVien","NhanVien")';">Đóng</button>
+                                <button class="btn btn-primary" type="reset">Reset</button>
+                                <button type="submit" class="btn btn-success">Lưu</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
