@@ -10,15 +10,15 @@
         }
 
         .menunxb {
-            cursor:pointer;
-            margin-left: 45%;
+            cursor: pointer;
+            margin-left: 52%;
             background: #ffffff;
             font-weight: 500;
             color: #294c6f;
+            width: 350px;
             border-radius: 30px;
             padding-top: 20px;
         }
-
         .namenxb:hover {
             color: crimson;
             text-decoration:none;
@@ -34,10 +34,10 @@
         <ul>
             <li>
                 <a style="padding-right:20px;">Nhà xuất bản</a>
-                <ul class="menutl">
+                <ul class="menunxb">
                     @foreach (var item in Model)
                     {
-                        <li class="namenxb"><a href="@Url.Action("CTTacGia",new { @Matg=item.TenNXB})">@item.TenNXB</a></li>
+                        <li class="namenxb"><a href="@Url.Action("CTNXB",new { @MaNxb=item.MaNXB})">@item.TenNXB</a></li>
                     }
 
                 </ul>

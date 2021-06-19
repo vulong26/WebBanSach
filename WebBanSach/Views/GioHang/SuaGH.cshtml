@@ -42,8 +42,21 @@
             background: #3b8b98;
         }
 
+        ul li ul {
+            position: absolute; /*chọn làm thành phần con của relative trên*/
+            top: 40px; /*cho cách menu cha 40px*/
+            left: -40px; /*đưa menu con qua bên trái -40px so với menu cha */
+            display: none; /*Ban đầu sẽ không hiển thị*/
+        }
+
+        ul li:hover ul {
+            cursor: pointer;
+            display: block; /* trỏ chuột vào sẽ hiển thị menu con */
+        }
+
         .flash.error {
             background: #294c6f;
+            display: -webkit-box;
         }
 
         #nameBook {
@@ -109,10 +122,34 @@
             margin-left: 45px;
             color: yellow;
         }
+        td {
+            padding: 20px;
+            text-align: center;
+        }
+
+        table.suagh {
+            border-radius: 30px;
+            /* border-collapse: collapse; */
+            margin-left: 28%;
+            background: bisque;
+            color: black;
+            margin-top: 30px;
+        }
+
+        span.title {
+            color: white;
+            background: #56b1d4;
+            font-size: x-large;
+            margin-left: 45%;
+            font-weight: 600;
+            padding: 10 60;
+            border-radius: 16px;
+        }
     </style>
 </head>
 
-<table>
+<span class="title">SỬA GIỎ HÀNG</span>
+<table class="suagh">
     <tr>
         <td> Mã sách </td>
 
@@ -128,7 +165,7 @@
     </tr>
     @foreach (var item in Model)
     {
-        
+
         using (Html.BeginForm("CapNhatGioHang", "GioHang", new { @iMaSp = item.iMaS }))
         {
             <tr>
@@ -144,14 +181,14 @@
 
                 <td>@item.ThanhTien.ToString("#,##") VNĐ </td>
                 <td>
-                    <input type="submit" value="Cập nhật"/>
+                    <input type="submit" value="Cập nhật" />
                     <br />
-                    @Html.ActionLink("Xóa","XoaGioHang",new {@iMaSp=item.iMaS})
+                    @Html.ActionLink("Xóa", "XoaGioHang", new { @iMaSp = item.iMaS })
 
                 </td>
             </tr>
 
-         }
-
         }
-    </table>
+
+    }
+</table>

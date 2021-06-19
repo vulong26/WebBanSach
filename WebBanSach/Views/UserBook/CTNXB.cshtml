@@ -1,23 +1,26 @@
 ﻿@using WebBanSach.Models;
-@model Sach
+@model NhaXuatBan 
+
 @{
-    ViewBag.Title = "XemChitiet";
+    ViewBag.Title = "Chi tiết tác giả";
     Layout = "~/Views/Shared/User.cshtml";
 }
 <!DOCTYPE html>
-
+<title>Nhà xuất bản</title>
+@{ IEnumerable<Sach> lstSp = (IEnumerable<Sach>)ViewBag.Sp;
+}
 <html>
 <head>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <style>
         #bodydetails {
             margin-top: 100px;
-            margin-left: 20%;
+            margin-left: -6%;
             margin-right: 15%;
         }
 
         #infor {
-            margin-left: 45%;
+            margin-left: 30%;
         }
 
         #Avatar {
@@ -68,6 +71,14 @@
             text-align: center;
             color: black;
         }
+        .namebook {
+            font-size: 26px;
+            color: #f4f7f5;
+            background: #2b8077;
+            text-align: center;
+            padding: 10px;
+            border-radius: 20px;
+        }
 
         #Avatar {
             border-style: dotted;
@@ -89,6 +100,10 @@
             text-align: center;
         }
 
+        .navbar.navbar-inverse.navbar-fixed-top {
+            display: none;
+        }
+
         ul li {
             padding-left: 1px;
             list-style: none;
@@ -105,11 +120,7 @@
             text-align: center;
         }
 
-        }
 
-        ul.pagination {
-            display: inline-flex;
-        }
 
         .menuPage li {
             margin-left: 2px;
@@ -118,44 +129,35 @@
         .pagination-container {
             margin-left: 40%;
         }
-
-        button.btnmua {
-            width: 50%;
-            margin-left: 45px;
-            color: yellow;
+        .mota {
+            color: black;
+            font-size: 18;
+            font-weight:400px;
+        }
+        .diachi {
+            color: #e20707;
+            font-size: 25px;
+            font-weight: 600px;
+            text-align: center;
+            margin: 10px;
         }
     </style>
 </head>
 <body>
     <div id="bodydetails">
-        <div id="Avatar">
-            <img src="@Url.Content("~/Images/" +Model.TenFileAnh)" width="400" height="650" />
-        </div>
+
         <div id="infor">
-            <div class="namebook">@Model.TenS</div>
+            <div class="namebook">Nhà xuất bản @Model.TenNXB</div>
             <br />
-            <div class="detailbook">Giới thiệu sách:<br />@Model.MoTa</div>
-            <br />
-            <div> <b style="color:black">Nhà xuất bản:  </b>@ViewBag.TenNXB</div>
-            <br />
-
-            <div><b style="color:black">Chủ đề :  </b>@ViewBag.TenChuDe</div>
-            <br />
-            <div><b style="color:black">Tác giả :  </b>@ViewBag.TenTacGia</div>
-            <br />
-            <div><b style="color:black">Đơn giá :  </b><a style="color:#cc1515"> @Model.GiaBan đ</a> </div>
-            <br />
-            @using (Html.BeginForm("ThemGioHang", "GioHang", new { @iMaS = Model.MaS, @sUrl = Request.Url.ToString() }))
-            {
-                <input type="submit" value="Mua Hàng" />
-
-            }
-
+            <div class="diachi">@Model.DiaChi</div>
+            <div class="mota" >@Model.MoTa</div>
         </div>
-        <div>
 
-        </div>
     </div>
-    
+    <br />
+    <p style="margin:20px 0px 100px 0px">
+        @Html.Action("NXBPartial", lstSp)
+    </p>
 </body>
 </html>
+

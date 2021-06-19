@@ -22,6 +22,9 @@ namespace WebBanSach.Models
         [StringLength(50)]
         public string TenTL { get; set; }
 
+        [StringLength(2200)]
+        public string MoTa { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Sach> Saches { get; set; }
     }
