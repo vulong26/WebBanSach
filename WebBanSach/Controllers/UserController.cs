@@ -94,5 +94,15 @@ namespace WebBanSach.Controllers
             return RedirectToAction("Index");
             
         }
+        [HttpPost]
+        public ActionResult TrangCaNhan(FormCollection f)
+        {
+            KHACHHANG kh = new KHACHHANG();
+            kh.HoTen = f["txtHoTen"].ToString();
+            kh.DiaChi = f["txtDiaChi"].ToString();
+            kh.DienThoai = f["txtSdt"].ToString();
+            
+            return View();
+        }
     }
 }

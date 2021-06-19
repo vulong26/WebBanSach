@@ -272,6 +272,7 @@
     <Content Include="Views\UserBook\CTTheLoai1.cshtml" />
     <Content Include="Views\UserBook\CTNXB.cshtml" />
     <Content Include="Views\UserBook\NXBPartial.cshtml" />
+    <Content Include="Views\User\TrangCaNhan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

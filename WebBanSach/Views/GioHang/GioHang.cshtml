@@ -106,6 +106,10 @@
             padding: 10 60;
             border-radius: 16px;
         }
+        p.capnhat {
+            background: white;
+            margin-top: 15px;
+        }
  </style>
 </head>
 
@@ -123,6 +127,7 @@
         <td> Số Lượng  </td>
 
         <td> Thành Tiền  </td>
+        <td> Chức năng </td>
     </tr>
     @foreach (var item in Model)
     {
@@ -143,6 +148,9 @@
         {
             <input type="submit" value="Đặt hàng" />
         }
+
+    </td>
+    <td>
         <p class="capnhat">@Html.ActionLink("Cập nhật", "SuaGH")</p>
     </td>
 
@@ -152,14 +160,5 @@
 
 
     }
-    <tr>
-        @*<td  colspan="6" style="text-align:right;color:black;background:white;">
-            
-        </td>*@
 
-    </tr>
-    <tr>
-
-
-    </tr>
 </table>

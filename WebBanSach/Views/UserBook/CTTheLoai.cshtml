@@ -21,7 +21,7 @@
             color: white;
             background: #56b1d4;
             font-size: x-large;
-            margin-left: 45%;
+            margin-left: 36%;
             font-weight: 600;
             padding: 10 60;
             border-radius: 16px;
@@ -34,11 +34,11 @@
     <div id="Book">
 
         <div id="Avatar">
-            <a href="@Url.Action("DetailsBook",new { @masach=item.MaS   })">
+            <a href="@Url.Action("DetailsBook","User",new { @masach=item.MaS   })">
                 <img src="@Url.Content("~/Images/" +item.TenFileAnh)" width="220" height="250" />
             </a>
 
-            <div><a style="margin:30px 0px 0px 0px" href="@Url.Action("DetailsBook",new { @masach=item.MaS})">@item.TenS</a></div>
+            <div><a style="margin:30px 0px 0px 0px" href="@Url.Action("DetailsBook","User",new { @masach=item.MaS})">@item.TenS</a></div>
             <font color="green">Giá:</font>  @item.GiaBan đ
             <div><button class="btnmua"><a href="@Url.Action("ThemGioHang","GioHang",new { @iMaS=item.MaS,@sUrl=Request.Url.ToString() })">Mua</a></button></div>
         </div>
