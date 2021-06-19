@@ -33,7 +33,7 @@
         button#btnTimKiem {
             
             margin-top: -2.8%;
-            margin-right: -30%;
+            margin-right: -19%;
         }
 
         .button, input[type="button"], button {
@@ -88,13 +88,68 @@
             background: #294c6f;
             display: -webkit-box;
         }
+        @*.col-md-3.ftr-grid {
+            float: left;
+            max-width: 225px;
+            margin-right: 8%;
+            color: white;
+            margin-top: 50px;
+        }
+        .col-md-3.ftr-info {
+            float: left;
+            max-width: 225px;
+            margin-right: 8%;
+            color: white;
+            margin-top: 50px;
+        }
+        html {
+            background: #3b8b98;
+        }
+        .baogom {
+            margin-left: 0%;
+            margin-top: 30px;
+        
+        }*@
+        .thong-tin {
+            display: inline-flex;
+            padding-bottom: 10px;
+            margin-left: -2.4%;
+        }
+        
+        .thong-tin1 {
+            margin-right: 30px;
+        }
+        .thong-tin2 {
+            margin-left: 213px;
+        }
+
+
+        .TCN ul li  {
+            position: absolute; /*chọn làm thành phần con của relative trên*/
+            top: 75px; /*cho cách menu cha 40px*/
+            left:67%;
+            display: none; /*Ban đầu sẽ không hiển thị*/
+        }
+
+        .TCN ul:hover li {
+    
+            cursor: pointer;
+            display: inline; /* trỏ chuột vào sẽ hiển thị menu con */
+        }
+        .TCN {
+            display: inline-flex;
+        }
     </style>
 </head>
 <body>
-
     <div id="ToanTrang">
         <div class="flash success" id="divdanhmuc">
-
+            <div class="thong-tin">
+                <div class="thong-tin1"> <a href="#"><i style=" margin-right: 10px;" class="fas fa-phone-alt"></i>0866744860</a></div>
+                <div class="thong-tin1"> <a href="#"><i style=" margin-right: 10px;" class="fas fa-envelope-square"></i>LDBooK@gmail.com</a></div>
+                <div class="thong-tin1"> <a href="#"><i style=" margin-right: 10px;" class="fal fa-search-location"></i>Bình Giang, Hải Dương</a></div>
+                <div class="thong-tin2"> <a href="https://www.facebook.com/dat.trungle.3"><i style="margin-right: 10px;" class="fab fa-facebook-square"></i>Đạt Béo</a></div>
+            </div>
             <ul class="navMenu">
                 <li><i class="fas fa-home"></i>@Html.ActionLink("Trang Chủ", "Index", "User")</li>
 
@@ -113,9 +168,14 @@
                     if (Session["TaiKhoan"] != null && Session["TaiKhoan"] != "")
                     {
                         KHACHHANG kh = (KHACHHANG)Session["TaiKhoan"];
-                        <span>@kh.HoTen</span>
-                        @Html.ActionLink("Đăng Xuất", "DangXuat", "User")
-
+                <div class="TCN">
+                    <ul>
+                        <a>  @kh.HoTen</a>
+                        <li> @Html.ActionLink("Trang cá nhân", "TrangCaNhan", "User")</li>
+                    </ul>
+                    @Html.ActionLink("Đăng Xuất", "DangXuat", "User")
+                </div>
+                        
                     }
                     else
                     {
@@ -142,5 +202,5 @@
             @RenderBody()
         </div>
     </div>
-    
+   
 </body>

@@ -90,7 +90,7 @@
     ul.pagination {
         display: inline-flex;
     }
-
+     
     .menuPage li {
         margin-left: 2px;
     }
@@ -119,10 +119,10 @@
 
     .banner {
         width: 1280px;
-        height: 600px;
+        height: 400px;
         margin-left: 17%;
         margin-bottom: 5%;
-        margin-top: 15%;
+        margin-top: 8%;
         border-radius: 20px;
         position: relative;
         overflow: hidden;
@@ -138,7 +138,7 @@
     .dieuhuong {
         color: aquamarine;
         position: absolute;
-        top: 53%;
+        top: 41%;
         font-size: 50px;
         padding-left: 5px;
     }
@@ -150,20 +150,61 @@
     .nameweb {
         color: white;
         background: #56b1d4;
-        font-size: x-large;
-        margin-left: 36%;
+        /* font-size: x-large; */
+        margin-left: 32%;
         font-weight: 600;
-        padding: 10 60;
+        padding: 42px 140px;
         border-radius: 16px;
         width: 25%;
         text-align: center;
-        margin-top: 10px;
+        font-family: serif;
+        margin-top: 60px;
+        font-size: 45px;
     }
+    .col-md-3.ftr-grid {
+        float: left;
+        max-width: 225px;
+        margin-right: 7%;
+        color: white;
+        margin-top: 50px;
+    }
+
+    .col-md-3.ftr-info {
+        margin-top:50px;
+        float: left;
+        max-width: 220px;
+        margin-right: 10%;
+        color: white;
+    }
+
+    html {
+        background: #3b8b98;
+    }
+
+    .baogom {
+        margin-left: 0%;
+        margin-top: 30px;
+    }
+
+    .thong-tin {
+        display: inline-flex;
+        padding-bottom: 10px;
+        margin-left: -2.4%;
+    }
+
+    .thong-tin1 {
+        margin-right: 30px;
+    }
+
+    .thong-tin2 {
+        margin-left: 213px;
+    }
+
 </style>
 
 <title>LDBook</title>
 <div class="nameweb">
-    <span>Hệ thống sách<br />LDBooK </span>
+    <span>Hệ thống sách LDBooK </span>
 </div>
 <div class="banner">
     <div class="dieuhuong">
@@ -172,8 +213,11 @@
     </div>
 
     <div class="chuyen-slide">
-        <img src="~/Images/1.jpg" />
-        <img src="~/Images/banner1.jpg" />
+        
+            <img src="~/Images/kimdong.jpg" />
+
+            <img src="~/Images/nxbtre.jpg" />
+
     </div>
 
 </div>
@@ -206,6 +250,52 @@
         @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
     </div>
     <br />
+    <div class="phancuoi">
+        <div class="baogom">
+            <div class="footer-grids">
+                <div class="col-md-3 ftr-info">
+                    <h3 style="font-size:2em">Giới thiệu về LDBooK</h3>
+                    <p>
+                        Được thành lập vào năm Covid-19 thứ 2.
+                        Sự hình thành bất đắc dĩ xuất phát từ DeadLine . Tuy nhiên chúng tôi sẽ phục vụ vô cùng tận tình!. Xin cảm ơn .
+                    </p>
+                </div>
+                <div class="col-md-3 ftr-grid">
+                    <h3 style="font-size:2em">Danh mục sản phẩm</h3>
+                    <ul class="ftr-list">
+                        <li><a href="#">Thiếu nhi</a></li>
+                        <li><a href="#">Tiểu thuyết</a></li>
+                        <li><a href="#">Chứng khoán</a></li>
+                        <li><a href="#">Ngoại ngữ</a></li>
+                        <li><a href="#">Tình yêu</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 ftr-grid">
+                    <h3 style="font-size:2em">Hỗ trợ khách hàng</h3>
+                    <ul class="ftr-list">
+                        <li><a href="#"> Tuyển Dụng</a></li>
+                        <li><a href="#"> Chính sách bảo mật thanh toán</a></li>
+                        <li><a href="#"> Chính sách bảo mật thông tin cá nhân</a></li>
+                        <li><a href="#"> Chính sách giải quyết khiếu nại</a></li>
+                        <li><a href="#">  Điều khoản sử dụng</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 ftr-grid">
+                    <h3 style="font-size:2em">Thông tin của chúng tôi</h3>
+                    <ul class="ftr-list">
+                        <li><a href="#"><i class="fas fa-phone-alt"></i>0866744860</a></li>
+                        <li><a href="#"><i class="fas fa-envelope-square"></i>LDBooK@gmail.com</a></li>
+                        <li><a href="#"><i class="fal fa-search-location"></i>Bình Giang, Hải Dương</a></li>
+                        <li><a href="#"> <i class="fas fa-hands-helping"></i>Giúp đỡ</a></li>
+                        <li><a href="https://www.facebook.com/dat.trungle.3"><i style="margin-right: 10px;" class="fab fa-facebook-square"></i>Đạt Béo</a></li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+
 </div>
 <br />
 

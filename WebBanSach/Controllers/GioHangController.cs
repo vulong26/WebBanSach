@@ -165,10 +165,13 @@ namespace WebBanSach.Controllers
                 ct.SoLuong = item.iSoLuong;
                 ct.DonGia = item.dDonGia.ToString();
                 db.ChiTietDonHangs.Add(ct);
+                
+
             }
+            db.SaveChanges();
             return View("View");
             
-            Session["GioHang"] = null;
+            
             
             
             return RedirectToAction("Index","User");
